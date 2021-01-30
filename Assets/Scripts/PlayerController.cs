@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private bool isGrounded = true;
 
+    bool isDead = false;
 
     Rigidbody2D rigidbody2D;
     [Header("Movement Control")]
@@ -39,10 +40,10 @@ public class PlayerController : MonoBehaviour
     bool canDash = true;
     Vector2 newVelocity;
 
-    [Space,Header("Eventos"),Space]
+    [Space, Header("Eventos"), Space]
     [SerializeField]
     float fireEventRunningEachSeconds = 0.2f;
-    [SerializeField,Tooltip("Restart the level after X seconds")]
+    [SerializeField, Tooltip("Restart the level after X seconds")]
     float restartLevelAfter = 2f;
     public UnityEvent OnJump;
     public UnityEvent OnFall;
@@ -61,6 +62,10 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (isDead)
+        {
+            return;
+        }
         if (Input.GetButtonDown("Jump"))
         {
             jump = true;
@@ -83,7 +88,7 @@ public class PlayerController : MonoBehaviour
             {
                 ResetDash();
             }
-            else if(canDash)
+            else if (canDash)
             {
                 Dash();
             }
@@ -92,6 +97,10 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (isDead)
+        {
+            return;
+        }
         if (jump && isGrounded == true)
         {
             Jump();
@@ -101,7 +110,8 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == 10) {
+        if (collision.gameObject.layer == 10)
+        {
             KillPlayer();
         }
         if (collision.gameObject.layer == 9)
@@ -140,7 +150,8 @@ public class PlayerController : MonoBehaviour
 
     private void Move(float movementInX)
     {
-        if (dashTime != startDashTime) {
+        if (dashTime != startDashTime)
+        {
             return;
         }
         newVelocity = rigidbody2D.velocity;
@@ -242,21 +253,28 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(DashCoolDown());
     }
 
-    private void KillPlayer() {
+    private void KillPlayer()
+    {
         //Do something
+        isDead = true;
+        rigidbody2D.isKinematic = true;
+        rigidbody2D.velocity = Vector2.zero;
         OnDeath?.Invoke();
         //Reset level
         StartCoroutine(RestartLevel());
     }
-    private IEnumerator RestartLevel() {
+    private IEnumerator RestartLevel()
+    {
         yield return new WaitForSeconds(restartLevelAfter);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
     }
-    public IEnumerator DashCoolDown() {
+    public IEnumerator DashCoolDown()
+    {
         float timer = 0;
         canDash = false;
-        while (timer <= dashCooldown) {
+        while (timer <= dashCooldown)
+        {
             timer += Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }

@@ -12,8 +12,8 @@ public  class GoToNextLevel : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
         if (collision.GetComponent<PreviousLevelTag>()) {
-            if (SceneManager.GetActiveScene().buildIndex <= 1) {
-                return;
+            if (SceneManager.GetActiveScene().buildIndex == 0) {
+                Application.Quit();
             }
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
         }
