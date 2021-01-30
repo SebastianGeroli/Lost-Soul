@@ -839,11 +839,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MovingObject2Positions
       objectReference: {fileID: 0}
-    - target: {fileID: 6399027145237995073, guid: a333d8d78e3fba44dbe86b7f45449a9d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6399027145237995078, guid: a333d8d78e3fba44dbe86b7f45449a9d,
         type: 3}
       propertyPath: m_LocalPosition.x
