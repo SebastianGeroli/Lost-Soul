@@ -103,8 +103,8 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!114 &962793612522052790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,10 +117,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 016464cf52877db498dcd6dd4b6afe5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGrounded: 1
   movementSpeed: 3
   controlInAir: 0.7
   controlGrounded: 1
   jumpForce: 5
+  dashSpeed: 50
+  dashCooldown: 0.5
 --- !u!58 &962793612522052777
 CircleCollider2D:
   m_ObjectHideFlags: 0

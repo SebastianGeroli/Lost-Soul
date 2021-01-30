@@ -521,10 +521,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 962793612522052789, guid: 95b5db841859be8408b046690749d5b5,
+    - target: {fileID: 962793612522052790, guid: 95b5db841859be8408b046690749d5b5,
         type: 3}
-      propertyPath: m_Constraints
-      value: 4
+      propertyPath: dashSpeed
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 962793612522052790, guid: 95b5db841859be8408b046690749d5b5,
+        type: 3}
+      propertyPath: dashCooldown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 962793612522052790, guid: 95b5db841859be8408b046690749d5b5,
+        type: 3}
+      propertyPath: startDashTime
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 962793612522052791, guid: 95b5db841859be8408b046690749d5b5,
         type: 3}
