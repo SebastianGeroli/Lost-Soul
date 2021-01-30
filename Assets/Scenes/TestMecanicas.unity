@@ -417,43 +417,6 @@ MonoBehaviour:
       data1: 0
       data2: 0
   defaultFrameSettings: 0
---- !u!1 &1923055099 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 962793612522052778, guid: 95b5db841859be8408b046690749d5b5,
-    type: 3}
-  m_PrefabInstance: {fileID: 962793614610476871}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1923055100
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1923055099}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62d44aefe14ec674fae24dbac9ea29cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!95 &1923055106
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1923055099}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f77c5e538311eac43a85e09b20341ccf, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2103528486
 GameObject:
   m_ObjectHideFlags: 0
@@ -664,56 +627,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 962793612522052776, guid: 95b5db841859be8408b046690749d5b5,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: a79906078dc3e554aaccca5e1905d4a0,
-        type: 3}
     - target: {fileID: 962793612522052778, guid: 95b5db841859be8408b046690749d5b5,
         type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 962793612522052778, guid: 95b5db841859be8408b046690749d5b5,
-        type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 962793612522052790, guid: 95b5db841859be8408b046690749d5b5,
-        type: 3}
-      propertyPath: OnJump.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 962793612522052790, guid: 95b5db841859be8408b046690749d5b5,
-        type: 3}
-      propertyPath: OnJump.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 962793612522052790, guid: 95b5db841859be8408b046690749d5b5,
-        type: 3}
-      propertyPath: OnJump.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 962793612522052790, guid: 95b5db841859be8408b046690749d5b5,
-        type: 3}
-      propertyPath: OnJump.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1923055106}
-    - target: {fileID: 962793612522052790, guid: 95b5db841859be8408b046690749d5b5,
-        type: 3}
-      propertyPath: OnJump.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetTrigger
-      objectReference: {fileID: 0}
-    - target: {fileID: 962793612522052790, guid: 95b5db841859be8408b046690749d5b5,
-        type: 3}
-      propertyPath: OnJump.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 962793612522052790, guid: 95b5db841859be8408b046690749d5b5,
-        type: 3}
-      propertyPath: OnJump.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Jump
       objectReference: {fileID: 0}
     - target: {fileID: 962793612522052791, guid: 95b5db841859be8408b046690749d5b5,
         type: 3}

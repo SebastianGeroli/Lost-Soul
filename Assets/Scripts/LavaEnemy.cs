@@ -10,6 +10,7 @@ public class LavaEnemy : MonoBehaviour
     [SerializeField]
     private float timeToReachBottom;
 
+    [SerializeField]
     private float delayToStartMoving = 0f;
 
     [SerializeField]
