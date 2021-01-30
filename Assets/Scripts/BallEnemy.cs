@@ -43,7 +43,7 @@ public partial class BallEnemy : MonoBehaviour
     private void MoveTowardsOrigin()
     {
         translation = Vector2.Lerp(transform.position, anchorPosition.position, Time.deltaTime * movementSpeed / 2);
-        transform.position = translation;
+        transform.Translate(translation - (Vector2)transform.position);
     }
     IEnumerator Attack()
     {
