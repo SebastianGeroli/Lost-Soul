@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     float jumpForce = 5f;
 
+    Animator animator;
     //## Dashing ##//
     [SerializeField]
     float dashSpeed = 50;
@@ -56,6 +57,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        animator = gameObject.GetComponent<Animator>();
         rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
         dashTime = startDashTime;
     }
@@ -65,6 +67,16 @@ public class PlayerController : MonoBehaviour
         if (isDead)
         {
             return;
+        }
+        if (rigidbody2D.velocity.y < 0)
+        {
+            animator.SetBool("Fall", true);
+            animator.SetBool("Jump", false);
+
+        }
+        else
+        {
+            animator.SetBool("Fall", false);
         }
         if (Input.GetButtonDown("Jump"))
         {
@@ -116,6 +128,10 @@ public class PlayerController : MonoBehaviour
         }
         if (collision.gameObject.layer == 9)
         {
+            if (isGrounded)
+            {
+                return;
+            }
             ResetGrounded();
         }
     }
@@ -138,6 +154,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
         OnJump?.Invoke();
+        animator.SetBool("Jump", true);
         isGrounded = false;
         rigidbody2D.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
     }
@@ -146,12 +163,16 @@ public class PlayerController : MonoBehaviour
     {
         OnFall?.Invoke();
         isGrounded = true;
+        animator.SetBool("Jump", false);
+        animator.SetBool("Crash", true);
+        StartCoroutine(FixCrash());
     }
 
     private void Move(float movementInX)
     {
         if (dashTime != startDashTime)
         {
+            animator.SetBool("isRunning", false);
             return;
         }
         newVelocity = rigidbody2D.velocity;
@@ -159,11 +180,33 @@ public class PlayerController : MonoBehaviour
         {
             newVelocity.x = movementInX * controlGrounded * movementSpeed;
             rigidbody2D.velocity = newVelocity;
+            if (movementInX < 0)
+            {
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+            }
+            else
+            {
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+
+            }
+            if (Mathf.Abs(movementInX) > 0)
+            {
+                animator.SetBool("isRunning", true);
+                animator.SetBool("Crash", false);
+                animator.SetBool("Jump", false);
+                animator.SetBool("Fall", false);
+            }
+            else
+            {
+                animator.SetBool("isRunning", false);
+            }
         }
         else
         {
             newVelocity.x = movementInX * controlInAir * movementSpeed;
             rigidbody2D.velocity = newVelocity;
+            animator.SetBool("isRunning", false);
+
         }
     }
 
@@ -260,6 +303,11 @@ public class PlayerController : MonoBehaviour
         rigidbody2D.isKinematic = true;
         rigidbody2D.velocity = Vector2.zero;
         OnDeath?.Invoke();
+        animator.SetBool("isRunning", false);
+        animator.SetBool("Crash", false);
+        animator.SetBool("Jump", false);
+        animator.SetBool("Fall", false);
+        animator.SetBool("Death", true);
         //Reset level
         StartCoroutine(RestartLevel());
     }
@@ -280,6 +328,11 @@ public class PlayerController : MonoBehaviour
         }
         canDash = true;
 
+    }
+    public IEnumerator FixCrash()
+    {
+        yield return new WaitForSeconds(0.2f);
+        animator.SetBool("Crash", false);
     }
     public enum Direction
     {
