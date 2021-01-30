@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -30,12 +31,23 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float startDashTime;
     private float dashTime;
-    private bool dash = false;
     [SerializeField, Tooltip("A partir de cuanto input se toman los valores como verdaderos para la direccion del dash")]
     private float deadValue = 0.3f;
     private Direction dashDirection = Direction.None;
 
     private Vector2 newVelocity;
+
+    [Space,Header("Eventos"),Space]
+    [SerializeField]
+    private float fireEventRunningEachSeconds = 0.2f;
+    [SerializeField,Tooltip("Restart the level after X seconds")]
+    private float restartLevelAfter = 2f;
+    public UnityEvent OnJump;
+    public UnityEvent OnFall;
+    public UnityEvent OnDash;
+    [Tooltip("este evento se dispara, cada ciertos segundos determinado por [fireEventRunningEachSeconds]")]
+    public UnityEvent OnRunning;
+    public UnityEvent OnDeath;
 
     #region  Unity Functions
 
@@ -113,12 +125,14 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
+        OnJump?.Invoke();
         isGrounded = false;
         rigidbody2D.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
     }
 
     private void ResetGrounded()
     {
+        OnFall?.Invoke();
         isGrounded = true;
     }
 
@@ -142,6 +156,7 @@ public class PlayerController : MonoBehaviour
 
     private void Dash()
     {
+        OnDash?.Invoke();
         dashTime -= Time.deltaTime;
         switch (dashDirection)
         {
@@ -226,9 +241,14 @@ public class PlayerController : MonoBehaviour
 
     private void KillPlayer() {
         //Do something
-
+        OnDeath?.Invoke();
         //Reset level
+        StartCoroutine(RestartLevel());
+    }
+    private IEnumerator RestartLevel() {
+        yield return new WaitForSeconds(restartLevelAfter);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
     }
     public enum Direction
     {
