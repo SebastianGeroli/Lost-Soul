@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 962793612522052789}
   - component: {fileID: 962793612522052790}
   - component: {fileID: 962793612522052777}
+  - component: {fileID: 3621359220863285328}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -123,7 +124,8 @@ MonoBehaviour:
   controlGrounded: 1
   jumpForce: 5
   dashSpeed: 50
-  dashCooldown: 0.5
+  startDashTime: 0.1
+  deadValue: 0.3
 --- !u!58 &962793612522052777
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -140,3 +142,15 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
+--- !u!114 &3621359220863285328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 962793612522052778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 655df537693169741921a14bd27c370d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
