@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
@@ -35,12 +36,15 @@ public class PlayerController : MonoBehaviour
     private Direction dashDirection = Direction.None;
 
     private Vector2 newVelocity;
+
     #region  Unity Functions
+
     private void Awake()
     {
         rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
         dashTime = startDashTime;
     }
+
     void Update()
     {
         if (Input.GetButtonDown("Jump"))
@@ -71,6 +75,7 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
     private void FixedUpdate()
     {
         if (jump && isGrounded == true)
@@ -79,13 +84,25 @@ public class PlayerController : MonoBehaviour
         }
         Move(Input.GetAxis("Horizontal"));
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.layer == 10) {
+            KillPlayer();
+        }
         if (collision.gameObject.layer == 9)
         {
             ResetGrounded();
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 10)
+        {
+            KillPlayer();
+        }
+    }
+
     #endregion //Unity Functions
 
 
@@ -99,7 +116,6 @@ public class PlayerController : MonoBehaviour
         isGrounded = false;
         rigidbody2D.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
     }
-
 
     private void ResetGrounded()
     {
@@ -155,6 +171,7 @@ public class PlayerController : MonoBehaviour
                 break;
         }
     }
+
     private void SetDirection(Vector2 direction)
     {
         if (Mathf.Abs(direction.x) < deadValue && Mathf.Abs(direction.y) >= deadValue)
@@ -207,7 +224,12 @@ public class PlayerController : MonoBehaviour
         rigidbody2D.velocity = Vector2.zero;
     }
 
+    private void KillPlayer() {
+        //Do something
 
+        //Reset level
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
     public enum Direction
     {
         None,
@@ -220,5 +242,7 @@ public class PlayerController : MonoBehaviour
         DownLeft,
         DownRight
     }
+
+
     #endregion //Private Functions
 }
