@@ -15,7 +15,7 @@ public class PauseMenu : MonoBehaviour
         {
             masterPanel.SetActive(false);
         }
-
+        DontDestroyOnLoad(gameObject);
     }
     private void Update()
     {

@@ -17,31 +17,33 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rigidbody2D;
     [Header("Movement Control")]
     [SerializeField]
-    private float movementSpeed = 3f;
+    float movementSpeed = 3f;
     [SerializeField]
-    private float controlInAir = 0.7f;
+    float controlInAir = 0.7f;
     [SerializeField]
-    private float controlGrounded = 1f;
+    float controlGrounded = 1f;
     [SerializeField]
-    private float jumpForce = 5f;
+    float jumpForce = 5f;
 
     //## Dashing ##//
     [SerializeField]
-    private float dashSpeed = 50;
+    float dashSpeed = 50;
     [SerializeField]
-    private float startDashTime;
-    private float dashTime;
+    float startDashTime;
+    [SerializeField]
+    float dashCooldown = 0.5f;
+    float dashTime;
     [SerializeField, Tooltip("A partir de cuanto input se toman los valores como verdaderos para la direccion del dash")]
-    private float deadValue = 0.3f;
-    private Direction dashDirection = Direction.None;
-
-    private Vector2 newVelocity;
+    float deadValue = 0.3f;
+    Direction dashDirection = Direction.None;
+    bool canDash = true;
+    Vector2 newVelocity;
 
     [Space,Header("Eventos"),Space]
     [SerializeField]
-    private float fireEventRunningEachSeconds = 0.2f;
+    float fireEventRunningEachSeconds = 0.2f;
     [SerializeField,Tooltip("Restart the level after X seconds")]
-    private float restartLevelAfter = 2f;
+    float restartLevelAfter = 2f;
     public UnityEvent OnJump;
     public UnityEvent OnFall;
     public UnityEvent OnDash;
@@ -81,7 +83,7 @@ public class PlayerController : MonoBehaviour
             {
                 ResetDash();
             }
-            else
+            else if(canDash)
             {
                 Dash();
             }
@@ -237,6 +239,7 @@ public class PlayerController : MonoBehaviour
         dashTime = startDashTime;
         dashDirection = Direction.None;
         rigidbody2D.velocity = Vector2.zero;
+        StartCoroutine(DashCoolDown());
     }
 
     private void KillPlayer() {
@@ -248,6 +251,16 @@ public class PlayerController : MonoBehaviour
     private IEnumerator RestartLevel() {
         yield return new WaitForSeconds(restartLevelAfter);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+    }
+    public IEnumerator DashCoolDown() {
+        float timer = 0;
+        canDash = false;
+        while (timer <= dashCooldown) {
+            timer += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+        canDash = true;
 
     }
     public enum Direction
