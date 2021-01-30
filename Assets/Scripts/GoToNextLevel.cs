@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public partial class GoToNextLevel : MonoBehaviour
+public  class GoToNextLevel : MonoBehaviour
 {
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -10,6 +10,12 @@ public partial class GoToNextLevel : MonoBehaviour
         if (collision.GetComponent<NextLevelTag>())
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+        if (collision.GetComponent<PreviousLevelTag>()) {
+            if (SceneManager.GetActiveScene().buildIndex == 0) {
+                Application.Quit();
+            }
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
         }
     }
 }
