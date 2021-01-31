@@ -42,3 +42,27 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: BackGround
+    uniqueID: 1235746235
+    locked: 0
+  - name: BeforeLava
+    uniqueID: 3000367051
+    locked: 0
+  - name: Lava
+    uniqueID: 3206555529
+    locked: 0
+  - name: MiddleGround
+    uniqueID: 3842081013
+    locked: 0
+  - name: ForeGround
+    uniqueID: 3937252585
+    locked: 0
+  - name: Collectable
+    uniqueID: 411532743
+    locked: 0
+  - name: Enemies
+    uniqueID: 1960183587
+    locked: 0
+  - name: Player
+    uniqueID: 3526532941
+    locked: 0
