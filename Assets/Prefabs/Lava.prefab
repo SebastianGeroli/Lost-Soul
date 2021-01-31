@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3968051436841949002}
   - component: {fileID: 3968051436841949003}
   m_Layer: 10
-  m_Name: Lava 01
+  m_Name: Lava
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,14 +25,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3968051436841949044}
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.061, y: -7.61, z: 0}
   m_LocalScale: {x: 5.8512506, y: 2.212813, z: 1}
   m_Children:
   - {fileID: 3968051438392116532}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3968051436841949002
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -70,9 +70,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1088411767
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: b1368f5b00c167b4aa335d5e3917deda, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4e7509576dcf11943b003e9d7075b68b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
