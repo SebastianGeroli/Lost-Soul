@@ -7,6 +7,7 @@ public class Collector : MonoBehaviour, ICollector
     [SerializeField]
     private Inventory inventory;
     private PlayerController playerController;
+    public UnityEvent OnCollect;
     private void Awake()
     {
         playerController = GetComponent<PlayerController>();
@@ -40,6 +41,7 @@ public class Collector : MonoBehaviour, ICollector
 
     public bool Add(ICollectable collectable)
     {
+        OnCollect?.Invoke();
         inventory.AddToList(collectable);
         return true;
     }

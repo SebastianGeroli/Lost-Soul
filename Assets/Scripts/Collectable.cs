@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
+using System.Collections;
+
 [RequireComponent(typeof(Collider2D))]
 public class Collectable : MonoBehaviour, ICollectable
 {

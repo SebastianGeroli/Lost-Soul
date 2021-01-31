@@ -7,6 +7,9 @@ public class Inventory : ScriptableObject
     private Dictionary<int, List<ICollectable>> collection = new Dictionary<int, List<ICollectable>>();
     public List<ICollectable> temporalList = new List<ICollectable>();
 
+    public event System.Action<int> soulsUpdated;
+
+
     public void AddToDictionary(int nextLevel)
     {
         foreach (var item in temporalList)
@@ -72,12 +75,14 @@ public class Inventory : ScriptableObject
                 Debug.Log("Added To Dictionary");
 
                 collection[collectable.CollectableSO.GroupID.ID].Add(collectable);
+                soulsUpdated?.Invoke(collection[collectable.CollectableSO.GroupID.ID].Count);
             }
             if (nextLevel == -1)
             {
                 Debug.Log("Added To Dictionary");
 
                 collection[collectable.CollectableSO.GroupID.ID].Add(collectable);
+                soulsUpdated?.Invoke(collection[collectable.CollectableSO.GroupID.ID].Count);
             }
         }
         else
@@ -85,6 +90,8 @@ public class Inventory : ScriptableObject
             collection.Add(collectable.CollectableSO.GroupID.ID, new List<ICollectable>());
             collection[collectable.CollectableSO.GroupID.ID].Add(collectable);
             Debug.Log("Added to Dictionary");
+            soulsUpdated?.Invoke(collection[collectable.CollectableSO.GroupID.ID].Count);
+
             success = true;
         }
         return success;
