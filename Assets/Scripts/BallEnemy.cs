@@ -65,10 +65,10 @@ public partial class BallEnemy : MonoBehaviour
                 }
                 if (timer >= movementSpeed)
                 {
-                    if (attackSource.isPlaying == false)
+                    if (idle.isPlaying == false)
                     {
-                        idle.Stop();
-                        attackSource.Play();
+                        attackSource.Stop();
+                        idle.Play();
                     }
                     MoveTowardsOrigin();
                     timer2 += Time.deltaTime;
