@@ -67,20 +67,20 @@ public class Inventory : ScriptableObject
             {
                 if (item.CollectableSO == collectable.CollectableSO)
                 {
-                    Debug.Log("Not Added To dictionary");
+                  //  Debug.Log("Not Added To dictionary");
                     return false;
                 }
             }
             if (nextLevel > collectable.CollectableSO.ImInScene)
             {
-                Debug.Log("Added To Dictionary");
+               // Debug.Log("Added To Dictionary");
 
                 collection[collectable.CollectableSO.GroupID.ID].Add(collectable);
                 soulsUpdated?.Invoke(collection[collectable.CollectableSO.GroupID.ID].Count);
             }
             if (nextLevel == -1)
             {
-                Debug.Log("Added To Dictionary");
+              //  Debug.Log("Added To Dictionary");
 
                 collection[collectable.CollectableSO.GroupID.ID].Add(collectable);
                 soulsUpdated?.Invoke(collection[collectable.CollectableSO.GroupID.ID].Count);
@@ -90,7 +90,7 @@ public class Inventory : ScriptableObject
         {
             collection.Add(collectable.CollectableSO.GroupID.ID, new List<ICollectable>());
             collection[collectable.CollectableSO.GroupID.ID].Add(collectable);
-            Debug.Log("Added to Dictionary");
+          //  Debug.Log("Added to Dictionary");
             soulsUpdated?.Invoke(collection[collectable.CollectableSO.GroupID.ID].Count);
 
             success = true;

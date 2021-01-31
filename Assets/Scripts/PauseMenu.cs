@@ -6,9 +6,6 @@ public class PauseMenu : MonoBehaviour
 {
     [SerializeField]
     private GameObject masterPanel;
-
-    [SerializeField]
-    GameObject mainMenu;
     private void Awake()
     {
         if (masterPanel.activeInHierarchy)
@@ -25,12 +22,8 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-    void ShowPause()
+    public void ShowPause()
     {
-        if (mainMenu != null && mainMenu.activeInHierarchy)
-        {
-            return;
-        }
         if (masterPanel.activeInHierarchy)
         {
             masterPanel.SetActive(false);
@@ -41,7 +34,7 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-    void QuitGame()
+   public void QuitGame()
     {
         Application.Quit();
     }

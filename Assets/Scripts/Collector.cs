@@ -20,7 +20,7 @@ public class Collector : MonoBehaviour, ICollector
     }
     private void ResetTemporalList()
     {
-        Debug.Log("TEMPORAL LIST RESETED");
+      // Debug.Log("TEMPORAL LIST RESETED");
         inventory.temporalList = new System.Collections.Generic.List<ICollectable>();
     }
     private void OnDisable()
