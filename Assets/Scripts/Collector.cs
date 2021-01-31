@@ -19,6 +19,7 @@ public class Collector : MonoBehaviour, ICollector
     }
     private void ResetTemporalList()
     {
+        Debug.Log("TEMPORAL LIST RESETED");
         inventory.temporalList = new System.Collections.Generic.List<ICollectable>();
     }
     private void OnDisable()
@@ -27,14 +28,14 @@ public class Collector : MonoBehaviour, ICollector
         GoToNextLevel.GoingBackLevel -= GoToNextLevel_GoingBackLevel;
         GoToNextLevel.GoingNextLevel -= GoToNextLevel_GoingNextLevel;
     }
-    private void GoToNextLevel_GoingNextLevel()
+    private void GoToNextLevel_GoingNextLevel(int nextlevel)
     {
-        inventory.AddToDictionary();
+        inventory.AddToDictionary(nextlevel);
     }
 
-    private void GoToNextLevel_GoingBackLevel()
+    private void GoToNextLevel_GoingBackLevel(int nextlevel)
     {
-        inventory.AddToDictionary();
+        inventory.AddToDictionary(nextlevel);
     }
 
     public bool Add(ICollectable collectable)
