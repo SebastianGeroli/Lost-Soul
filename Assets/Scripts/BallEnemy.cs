@@ -18,7 +18,10 @@ public partial class BallEnemy : MonoBehaviour
     bool gameOver = false;
     Vector2 translation;
     bool isInRange = false;
-
+    [SerializeField]
+    AudioSource idle;
+    [SerializeField]
+    AudioSource attackSource;
     Rigidbody2D rigidbody2D;
     void Start()
     {
@@ -55,8 +58,18 @@ public partial class BallEnemy : MonoBehaviour
             {
                 timer += Time.deltaTime;
                 MoveTowardPlayer();
+                if (attackSource.isPlaying == false)
+                {
+                    idle.Stop();
+                    attackSource.Play();
+                }
                 if (timer >= movementSpeed)
                 {
+                    if (attackSource.isPlaying == false)
+                    {
+                        idle.Stop();
+                        attackSource.Play();
+                    }
                     MoveTowardsOrigin();
                     timer2 += Time.deltaTime;
                     if (timer2 >= movementSpeed / 2)
@@ -68,6 +81,11 @@ public partial class BallEnemy : MonoBehaviour
             }
             else
             {
+                if (idle.isPlaying == false)
+                {
+                    attackSource.Stop();
+                    idle.Play();
+                }
                 timer = 0;
                 timer2 = 0;
                 MoveTowardsOrigin();

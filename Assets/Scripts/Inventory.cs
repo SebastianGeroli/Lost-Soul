@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class Inventory : ScriptableObject
 {
     private Dictionary<int, List<ICollectable>> collection = new Dictionary<int, List<ICollectable>>();
+    public Dictionary<int, List<ICollectable>> Collection => collection;
     public List<ICollectable> temporalList = new List<ICollectable>();
 
     public event System.Action<int> soulsUpdated;
