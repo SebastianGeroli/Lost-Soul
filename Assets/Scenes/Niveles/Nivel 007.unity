@@ -1047,7 +1047,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &887316114
 PrefabInstance:
@@ -1600,7 +1600,7 @@ PrefabInstance:
         type: 3}
       propertyPath: lava
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1255624975}
     - target: {fileID: 6399027145237995079, guid: a333d8d78e3fba44dbe86b7f45449a9d,
         type: 3}
       propertyPath: timeToReachTop
@@ -1613,6 +1613,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a333d8d78e3fba44dbe86b7f45449a9d, type: 3}
+--- !u!4 &1255624975 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6954363144887449896, guid: a333d8d78e3fba44dbe86b7f45449a9d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1255624974}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1532018284
 GameObject:
   m_ObjectHideFlags: 0
@@ -1827,7 +1833,7 @@ Transform:
   m_LocalScale: {x: 1, y: 2.2605057, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1637948666
 PrefabInstance:
