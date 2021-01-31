@@ -1,32 +1,45 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 [RequireComponent(typeof(Collider2D), typeof(Rigidbody2D))]
 public class Collector : MonoBehaviour, ICollector
 {
-    private Dictionary<int, List<ICollectable>> collection = new Dictionary<int, List<ICollectable>>();
+    [SerializeField]
+    private Inventory inventory;
+    private PlayerController playerController;
+    private void Awake()
+    {
+        playerController = GetComponent<PlayerController>();
+    }
+    private void OnEnable()
+    {
+        GoToNextLevel.GoingBackLevel += GoToNextLevel_GoingBackLevel;
+        GoToNextLevel.GoingNextLevel += GoToNextLevel_GoingNextLevel;
+        playerController.OnDeath.AddListener(ResetTemporalList);
+    }
+    private void ResetTemporalList()
+    {
+        inventory.temporalList = new System.Collections.Generic.List<ICollectable>();
+    }
+    private void OnDisable()
+    {
+        playerController.OnDeath.RemoveListener(ResetTemporalList);
+        GoToNextLevel.GoingBackLevel -= GoToNextLevel_GoingBackLevel;
+        GoToNextLevel.GoingNextLevel -= GoToNextLevel_GoingNextLevel;
+    }
+    private void GoToNextLevel_GoingNextLevel()
+    {
+        inventory.AddToDictionary();
+    }
+
+    private void GoToNextLevel_GoingBackLevel()
+    {
+        inventory.AddToDictionary();
+    }
+
     public bool Add(ICollectable collectable)
     {
-        bool success = false;
-        if (collection.ContainsKey(collectable.CollectableSO.GroupID.ID))
-        {
-            if (collection[collectable.CollectableSO.GroupID.ID].Contains(collectable))
-            {
-                success = false;
-            }
-            else
-            {
-                collection[collectable.CollectableSO.GroupID.ID].Add(collectable);
-                success = true;
-            }
-        }
-        else
-        {
-            collection.Add(collectable.CollectableSO.GroupID.ID, new List<ICollectable>());
-            collection[collectable.CollectableSO.GroupID.ID].Add(collectable);
-            success = true;
-        }
-        return success;
+        inventory.AddToList(collectable);
+        return true;
     }
 }

@@ -143,3 +143,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collectable: {fileID: 11400000, guid: a92a20fdc63246e47bd4cd55a4135ea7, type: 2}
+  inventory: {fileID: 11400000, guid: 7caf0cd9fa9512042950c2935ff407d4, type: 2}

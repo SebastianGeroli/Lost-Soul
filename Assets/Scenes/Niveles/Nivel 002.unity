@@ -532,6 +532,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoulCollectable
       objectReference: {fileID: 0}
+    - target: {fileID: 5302114727309385435, guid: 71db0e8bd253bb54ea7be1d6a2251e5e,
+        type: 3}
+      propertyPath: collectable
+      value: 
+      objectReference: {fileID: 11400000, guid: 5fae4ad34b231ff4ba8abdcb0c64ef5a,
+        type: 2}
     - target: {fileID: 5302114727309385437, guid: 71db0e8bd253bb54ea7be1d6a2251e5e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -692,9 +698,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 1456468629}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23c1ce4fb46143f46bc5cb5224c934f6, type: 3}
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!81 &1456468631
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1017,7 +1042,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &2126800909
 BoxCollider2D:

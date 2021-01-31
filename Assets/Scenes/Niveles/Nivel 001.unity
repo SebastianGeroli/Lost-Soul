@@ -310,6 +310,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoulCollectable
       objectReference: {fileID: 0}
+    - target: {fileID: 5302114727309385435, guid: 71db0e8bd253bb54ea7be1d6a2251e5e,
+        type: 3}
+      propertyPath: collectable
+      value: 
+      objectReference: {fileID: 11400000, guid: 962c27b2b468b5040be798255d2d6e0d,
+        type: 2}
     - target: {fileID: 5302114727309385436, guid: 71db0e8bd253bb54ea7be1d6a2251e5e,
         type: 3}
       propertyPath: m_Offset.y
@@ -832,7 +838,6 @@ GameObject:
   - component: {fileID: 1565499361}
   - component: {fileID: 1565499360}
   - component: {fileID: 1565499359}
-  - component: {fileID: 1565499358}
   - component: {fileID: 1565499362}
   m_Layer: 0
   m_Name: Main Camera (1)
@@ -841,18 +846,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1565499358
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1565499357}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23c1ce4fb46143f46bc5cb5224c934f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!81 &1565499359
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1055,7 +1048,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3968051437852023659
 PrefabInstance:

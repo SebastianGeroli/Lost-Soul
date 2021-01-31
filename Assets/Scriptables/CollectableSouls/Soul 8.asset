@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2dc187ed56bf7314daa9851b7bb840a0, type: 3}
-  m_Name: Soul
+  m_Name: Soul 8
   m_EditorClassIdentifier: 
   groupID: {fileID: 11400000, guid: 002c7638c03a05c44a2f31d2e22b6e0d, type: 2}
